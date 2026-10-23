@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+# votes - local only, never commit (except the template)
+satuk_agent/votes_folder/*
+!satuk_agent/votes_folder/.template.yaml
+!satuk_agent/votes_folder/.gitkeep
+# raw voter inputs - local only, never commit
+satuk_agent/*.xlsx
+satuk_agent/*.csv
+!satuk_agent/sample_voters.csv
+=======
+# votes - local only, never commit
+satuk_agent/votes_folder/
+satuk_agent/submission_log.csv
+satuk_agent/.vote_counter.json
+satuk_agent/votes_input/*.bak
+# Excel lock files and local run logs
+satuk_agent/votes_input/~$*
+satuk_agent/votes_input/_counter_test/
+satuk_agent/*_run.log
+satuk_agent/*_run_err.log
+# cross-process lock files (created by the parallel vote workers)
+satuk_agent/.vote_counter.lock
+satuk_agent/.submission_log.lock
+# parallel worker logs
+satuk_agent/run1.log
+satuk_agent/run2.log
+satuk_agent/run3.log
+satuk_agent/run*.err
+>>>>>>> 4d1dbbc23a0e7813e59adce5ab46ea033dd19dcd
+# python cache
+__pycache__/
+*.pyc
+*.pyo
+# excel lock files
+~$*.xlsx
