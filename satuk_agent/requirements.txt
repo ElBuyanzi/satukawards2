@@ -1,7 +1,4 @@
 requests
-pyyaml
-<<<<<<< HEAD
-openpyxl  # xlsx voter files (--csv file.xlsx)
-=======
+pandas
 openpyxl
->>>>>>> 4d1dbbc23a0e7813e59adce5ab46ea033dd19dcd
+pyyaml
