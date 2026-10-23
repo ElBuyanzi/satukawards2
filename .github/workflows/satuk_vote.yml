@@ -24,18 +24,18 @@ jobs:
 
       - name: Step 1 - Generate YAMLs for All 4 Servers (30-Min Window)
         run: |
-          python satuk_agent/loadtest_gen.py --server-id 1 --csv satuk_agent/newdata.xlsx --minutes 30 --clear --nominee AECAS
-          python satuk_agent/loadtest_gen.py --server-id 2 --csv satuk_agent/newdata.xlsx --minutes 30 --clear --nominee AECAS
-          python satuk_agent/loadtest_gen.py --server-id 3 --csv satuk_agent/newdata.xlsx --minutes 30 --clear --nominee AECAS
-          python satuk_agent/loadtest_gen.py --server-id 4 --csv satuk_agent/newdata.xlsx --minutes 30 --clear --nominee AECAS
+          python satuk_agent/loadtest_gen.py --server-id 1 --csv satuk_agent/newdata.xlsx --minutes 10 --clear --nominee AECAS
+          python satuk_agent/loadtest_gen.py --server-id 2 --csv satuk_agent/newdata.xlsx --minutes 10 --clear --nominee AECAS
+          python satuk_agent/loadtest_gen.py --server-id 3 --csv satuk_agent/newdata.xlsx --minutes 10 --clear --nominee AECAS
+          python satuk_agent/loadtest_gen.py --server-id 4 --csv satuk_agent/newdata.xlsx --minutes 10 --clear --nominee AECAS
 
       - name: Step 2 - Run All 4 Servers Concurrently
         run: |
           # Run all 4 server instances in the background (&) and wait for them to finish (wait)
-          python satuk_agent/loadtest_run.py --server-id 1 --workers 32 --max-rps 30 --live --allow-real --no-resume --no-seek &
-          python satuk_agent/loadtest_run.py --server-id 2 --workers 16 --max-rps 15 --live --allow-real --no-resume --no-seek &
-          python satuk_agent/loadtest_run.py --server-id 3 --workers 16 --max-rps 15 --live --allow-real --no-resume --no-seek &
-          python satuk_agent/loadtest_run.py --server-id 4 --workers 8  --max-rps 10 --live --allow-real --no-resume --no-seek &
+          python satuk_agent/loadtest_run.py --server-id 1 --workers 32 --max-rps 200 --live --allow-real --no-resume --no-seek &
+          python satuk_agent/loadtest_run.py --server-id 2 --workers 32 --max-rps 200 --live --allow-real --no-resume --no-seek &
+          python satuk_agent/loadtest_run.py --server-id 3 --workers 32 --max-rps 200 --live --allow-real --no-resume --no-seek &
+          python satuk_agent/loadtest_run.py --server-id 4 --workers 32 --max-rps 200 --live --allow-real --no-resume --no-seek &
           wait
 
       - name: Upload Results Logs (Artifacts)
